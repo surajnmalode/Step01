@@ -2,7 +2,16 @@ package com.in28minutes.database.databasedemo.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQuery(name="find_all_persons", query="select p from Person p")
 public class Person {
+	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	private String location;
@@ -10,6 +19,12 @@ public class Person {
 	 
 	public Person() {
 
+	}
+	public Person(String name, String location, Date birthdate) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.birthdate = birthdate;
 	}
 	public Person(int id, String name, String location, Date birthdate) {
 		super();
